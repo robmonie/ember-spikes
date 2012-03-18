@@ -1,0 +1,43 @@
+GIT
+  remote: https://github.com/livingsocial/rake-pipeline.git
+  revision: 961659f592eca500050c884d61c5d1a2da45cf09
+  specs:
+    rake-pipeline (0.6.0)
+      rake (~> 0.9.0)
+      thor
+
+GIT
+  remote: https://github.com/wycats/rake-pipeline-web-filters.git
+  revision: ca6f774662ac9aa2beb9a37d8b67faa87783c408
+  specs:
+    rake-pipeline-web-filters (0.6.0)
+      rack
+      rake-pipeline (~> 0.6)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    colored (1.2)
+    execjs (1.3.0)
+      multi_json (~> 1.0)
+    kicker (2.5.0)
+      rb-fsevent
+    multi_json (1.1.0)
+    rack (1.4.1)
+    rake (0.9.2.2)
+    rb-fsevent (0.9.0)
+    thor (0.14.6)
+    uglifier (1.0.4)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  colored
+  kicker
+  rack
+  rake-pipeline!
+  rake-pipeline-web-filters!
+  uglifier (~> 1.0.3)
