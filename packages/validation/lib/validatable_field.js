@@ -1,6 +1,6 @@
 var BASIC_FIELD_TEMPLATE, BASIC_FIELD_TEMPLATE_STRING, CONTROL_GROUP_TEMPLATE;
 
-BASIC_FIELD_TEMPLATE_STRING = "{{view FieldView}}\n{{#if hintOrErrorText}}\n  <div class=\"help-block\">{{hintOrErrorText}}</div>\n{{/if}}";
+BASIC_FIELD_TEMPLATE_STRING = "{{view fieldViewClass}}\n{{#if hintOrErrorText}}\n  <div class=\"help-block\">{{hintOrErrorText}}</div>\n{{/if}}";
 BASIC_FIELD_TEMPLATE = Ember.Handlebars.compile(BASIC_FIELD_TEMPLATE_STRING);
 CONTROL_GROUP_TEMPLATE = Ember.Handlebars.compile("<label class=\"control-label\">{{label}}</label>\n<div class=\"controls\">\n  " + BASIC_FIELD_TEMPLATE_STRING + "\n</div>");
 
@@ -26,13 +26,14 @@ ET.ValidatableField = Ember.View.extend({
     this.set('validator', ET.Validator.create({
       host: this
     }));
-    options = {};
-    if (this.get('valueBinding')) {
-      Em.mixin(options, {
-        valueBinding: this.get('valueBinding')
-      });
-    }
-    return this.set('FieldView', this.get('fieldViewClass').extend(options));
+    // options = {};
+    // if (this.get('valueBinding')) {
+    //   Em.mixin(options, {
+    //     valueBinding: this.get('valueBinding')
+    //   });
+    // }
+    // this.set('FieldView', this.get('fieldViewClass').extend(options));
+
   },
 
   destroy: function() {
