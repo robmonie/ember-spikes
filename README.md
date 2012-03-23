@@ -3,10 +3,10 @@
 Contains a very alpha and incomplete validation framework and form wizard view with validation integration using the twitter bootstrap css and html format for layout. This has been ported from a small application that was developed in coffeescript so the javascript has been converted automatically at this stage. I'll tidy this up over time.
 
 ##Getting started
-tbc
+TBC
 
 ##Demos
-tbc
+A basic demo can be found in the demo folder. This shows a basic three page form with validation.
 
 ##How to build
 
@@ -21,5 +21,18 @@ This will create a number of js files under the 'dist' folder. The easiest one t
 
 ##Developing ember-tools with Kicker
 
-The kicker gem aids in developing by detecting changes to the file system and running tasks. The most basic example of this is to run `kicker -e "rake dist"` from the packages directory to rebuild the framework as files are modified.
+The kicker gem aids development by detecting changes to ember-tools framework files and running tasks. The most basic example of this is to run `kicker -e "rake dist"` from the packages directory to rebuild the framework as files are modified.
+
+
+##To Do
+
+* Added more validators
+* Improve validation lifecycle, in particular when required field validation is triggered.
+* Required field indicators
+* Layout improvements
+* Tests
+* Performance tests for larger forms
+* Docs
+
+
 
