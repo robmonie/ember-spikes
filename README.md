@@ -26,7 +26,7 @@ The kicker gem aids development by detecting changes to ember-tools framework fi
 
 ##To Do
 
-* Added more validators
+* More validators
 * Improve validation lifecycle, in particular when required field validation is triggered.
 * Required field indicators
 * Layout improvements
