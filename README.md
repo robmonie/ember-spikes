@@ -33,6 +33,7 @@ The kicker gem aids development by detecting changes to ember-tools framework fi
 * Tests
 * Performance tests for larger forms
 * Docs
+* Cleanup js following port from coffeescript
 
 
 

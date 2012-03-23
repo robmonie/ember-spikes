@@ -11,6 +11,7 @@ ET.TextField = ET.ValidatableField.extend({
 
     focusOut: function() {
       this.setPath('parentView.hasHadFocus', true);
+      this.getPath('parentView.validator').validate(this.get('value'));
     }
 
   })

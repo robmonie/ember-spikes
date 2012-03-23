@@ -26,13 +26,13 @@ ET.ValidatableField = Ember.View.extend({
     this.set('validator', ET.Validator.create({
       host: this
     }));
-    // options = {};
-    // if (this.get('valueBinding')) {
-    //   Em.mixin(options, {
-    //     valueBinding: this.get('valueBinding')
-    //   });
-    // }
-    // this.set('FieldView', this.get('fieldViewClass').extend(options));
+    options = {};
+    if (this.get('valueBinding')) {
+      Em.mixin(options, {
+        valueBinding: this.get('valueBinding')
+      });
+    }
+    this.set('FieldView', this.get('fieldViewClass').extend(options));
 
   },
 
@@ -55,9 +55,9 @@ ET.ValidatableField = Ember.View.extend({
     } else {
       return this.get('hint');
     }
-  }).property('error', 'hint').cacheable(),
+  }).property('errorMessages', 'hint').cacheable(),
 
-  errorDidChange: (function() {
+  errorStateDidChange: (function() {
     if (this.get('controlGroup')) {
       return;
     }
