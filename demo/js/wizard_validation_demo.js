@@ -14,7 +14,7 @@ DETAILS_TEMPLATE = '\
 <legend>Personal Details</legend>\
 {{view ET.TextField label="Name" required="true" valueBinding="content.name"}}\
 {{view ET.TextField label="Email" required="true" valueBinding="content.email" validators="email"}}\
-{{view ET.TextField label="Phone" required="true" valueBinding="content.phone" validators="minLength(8)"}}\
+{{view ET.TextField label="Phone" required="true" valueBinding="content.phone" validators="minLength(8) maxLength(12)"}}\
 {{view ET.TextField label="Age" required="true" valueBinding="content.age" validators="numberRange(1..100)"}}\
 </fieldset>\
 '

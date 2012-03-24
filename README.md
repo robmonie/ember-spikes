@@ -1,12 +1,12 @@
 # Ember Tools
 
-Contains a very alpha and incomplete validation framework and form wizard view with validation integration using the twitter bootstrap css and html format for layout. This has been ported from a small application that was developed in coffeescript so the javascript has been converted automatically at this stage. I'll tidy this up over time.
+A few reusable ember.js components which at this stage comprises of a very alpha and incomplete validation framework and form wizard view with validation integration using the twitter bootstrap css and html format for layout.
 
 ##Getting started
 TBC
 
 ##Demos
-A basic demo can be found in the demo folder. This shows a three page form with validation.
+A basic demo can be found in the demo folder. This shows a three page wizard form with validation.
 
 To run locally, clone the repository locally and build the project following the steps in 'How to build' below. The demo requires a local `dist\ember-tools.js` in order to run. Once things stabilise a bit more this step will no longer be required.
 
@@ -29,13 +29,13 @@ The kicker gem aids development by detecting changes to ember-tools framework fi
 ##To Do
 
 * More validators
-* Improve validation lifecycle, in particular when required field validation is triggered.
+* Support for more field types
 * Required field indicators
 * Layout improvements
-* Tests
+* Specs
 * Performance tests for larger forms
 * Docs
-* Cleanup js following port from coffeescript
+
 
 
 
