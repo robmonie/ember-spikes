@@ -1,28 +1,33 @@
 ET.ValidationGroup = Ember.Object.extend({
+
   init: function() {
     this._super();
     return this._validity = {};
   },
+
   notifyValidity: function(validatable, validity) {
     if (this._validity[validatable] !== validity) {
       this._validity[validatable] = validity;
       return this.set('lastUpdated', new Date());
     }
   },
+
   unregister: function(validatable) {
     return delete this._validity[validatable];
   },
+
   isValid: (function() {
-    var k, v, valid, _ref;
+    var k, valid = true, validity;
     valid = true;
-    _ref = this._validity;
-    for (k in _ref) {
-      v = _ref[k];
-      if (!v) {
+    validity = this._validity;
+
+    for (k in validity) {
+      if (!validity[k]) {
         valid = false;
         break;
       }
     }
     return valid;
   }).property('lastUpdated').cacheable()
+
 });

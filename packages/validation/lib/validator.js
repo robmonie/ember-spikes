@@ -1,14 +1,17 @@
 ET.Validator = Ember.Object.extend({
   host: null,
   init: function() {
-    var host, key, rules, validationGroup, validator, validators, _i, _len, _ref, _results;
+    var host, key, rules, validationGroup, validator, validators, nearestWithValidationGroup, _i, _len, _results;
     this._super();
     host = this.get('host');
-    validationGroup = (_ref = host.nearestWithProperty('validationGroup')) != null ? _ref.get('validationGroup') : void 0;
-    if (validationGroup) {
+    nearestWithValidationGroup = host.nearestWithProperty('validationGroup');
+
+    if (nearestWithValidationGroup) {
+      validationGroup = nearestWithValidationGroup.get('validationGroup');
       this.set('validationGroup', validationGroup);
       validationGroup.notifyValidity(this, false);
     }
+
     this.set('rules', rules = []);
     this.set('required', host.get('required'));
     rules = this.get('rules');
@@ -29,6 +32,7 @@ ET.Validator = Ember.Object.extend({
     }
     return _results;
   },
+
   validate: (function(value) {
     var errorMessages, errors, requiredRule, rule, rules, _i, _len;
     errors = this.get('errors');
@@ -50,15 +54,20 @@ ET.Validator = Ember.Object.extend({
     }
     return this.get('host').set('errorMessages', errorMessages);
   }),
+
   destroy: function() {
-    var _ref;
-    if ((_ref = this.get('validationGroup')) != null) {
-      _ref.unregister(this);
+    var validationGroup;
+    if (validationGroup = this.get('validationGroup')) {
+      validationGroup.unregister(this);
     }
     return this._super();
   },
+
   notifyValidity: (function() {
-    var _ref;
-    return (_ref = this.get('validationGroup')) != null ? _ref.notifyValidity(this, this.getPath('host.errorMessages.length') === 0) : void 0;
+    var validationGroup;
+    if (validationGroup = this.get('validationGroup')) {
+      validationGroup.notifyValidity(this, this.getPath('host.errorMessages.length') === 0);
+    }
   }).observes('host.errorMessages')
+
 });

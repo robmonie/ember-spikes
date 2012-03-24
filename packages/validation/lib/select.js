@@ -2,6 +2,7 @@ require('validation/validatable_field');
 
 ET.SelectField = ET.ValidatableField.extend({
   fieldViewClass: Ember.Select.extend({
+
     contentBinding: 'parentView.content',
     selectionBinding: 'parentView.selection',
     optionLabelPathBinding: Ember.Binding.oneWay('parentView.optionLabelPath'),
