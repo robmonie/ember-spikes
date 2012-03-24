@@ -75,12 +75,15 @@ ET.WizardView = Ember.View.extend({
   },
 
   NavBottomView: Ember.View.extend({
+
     classNames: ['nav-bottom-view', 'form-actions', 'row'],
 
     NextButton: Ember.Button.extend({
+
       classNames: ['btn', 'btn-primary'],
       bindAttributes: 'disabled',
       template: Ember.Handlebars.compile('Next'),
+
       isVisible: (function() {
         var currentPage = this.getPath('parentView.parentView.currentPage'),
             numberOfPages = this.getPath('parentView.parentView.numberOfPages'),
@@ -92,15 +95,19 @@ ET.WizardView = Ember.View.extend({
           return currentPage < numberOfPages;
         }
       }).property('parentView.parentView.currentPage'),
+
       disabledBinding: Ember.Binding.oneWay('parentView.parentView.isCurrentPageValid').not(),
+
       click: function() {
         return this.nearestWithProperty('currentPage').nextPage();
       }
     }),
 
     PreviousButton: Ember.Button.extend({
+
       classNames: ['btn'],
       template: Ember.Handlebars.compile('Previous'),
+
       isVisible: (function() {
         var currentPage = this.getPath('parentView.parentView.currentPage'),
             numberOfPages = this.getPath('parentView.parentView.numberOfPages'),
@@ -112,14 +119,17 @@ ET.WizardView = Ember.View.extend({
           return currentPage > 1 && currentPage <= numberOfPages;
         }
       }).property('parentView.parentView.currentPage'),
+
       click: function() {
         return this.nearestWithProperty('currentPage').previousPage();
       }
     }),
 
     SubmitButton: Ember.Button.extend({
+
       classNames: ['btn', 'btn-primary'],
       template: Ember.Handlebars.compile('Submit Booking'),
+
       isVisible: (function() {
         var currentPage = this.getPath('parentView.parentView.currentPage'),
             numberOfPages = this.getPath('parentView.parentView.numberOfPages'),
@@ -130,7 +140,9 @@ ET.WizardView = Ember.View.extend({
           return currentPage === numberOfPages;
         }
       }).property('parentView.parentView.currentPage'),
+
       disabledBinding: Ember.Binding.oneWay('parentView.parentView.isCurrentPageValid').not(),
+
       click: function() {
         return this.nearestWithProperty('currentPage').submit();
       }

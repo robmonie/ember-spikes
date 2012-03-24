@@ -1,7 +1,7 @@
 ET.Validator = Ember.Object.extend({
   host: null,
   init: function() {
-    var host, key, rules, validationGroup, validator, validators, nearestWithValidationGroup, _i, _len, _results;
+    var host, key, rules, validationGroup, validator, validators, nearestWithValidationGroup, validatorOptions, _i, _len, _results;
     this._super();
     host = this.get('host');
     nearestWithValidationGroup = host.nearestWithProperty('validationGroup');
@@ -16,21 +16,42 @@ ET.Validator = Ember.Object.extend({
     this.set('required', host.get('required'));
     rules = this.get('rules');
     validators = host.get('validators');
+    if(!validators) {
+      return;
+    }
+
     if (typeof validators === 'string') {
-      validators = validators.split(' ');
-    } else {
+      unparsedValidators = validators.split(' ');
       validators = [];
+
+      unparsedValidators.forEach(function(v, i) {
+
+        var pos, matches, constraint, key, options;
+
+        pos = v.indexOf('(');
+        if(pos >= 0 ) {
+          key = v.substr(0, pos);
+          matches = v.match(/\((\w+|.*)\)/);
+          if(matches && matches.length == 2) {
+            constraint = matches[1];
+          }
+        } else {
+          key = v;
+        }
+        if(constraint) {
+          options = {constraintString: constraint};
+        }
+        validator = ET.validatorRegistry.byKey(key, options);
+        rules.pushObject(validator);
+      });
+    } else {
+      validators.forEach(function(validator) {
+        validator = ET.validatorRegistry.byKey(validator.key, validator.options);
+        rules.pushObject(validator);
+      });
     }
-    _results = [];
-    for (_i = 0, _len = validators.length; _i < _len; _i++) {
-      key = validators[_i];
-      validator = ET.validatorRegistry[key];
-      if (!validator) {
-        console.error("There is no validator registered under the key '" + key + "'. Double check the name in the validator registry.");
-      }
-      _results.push(rules.pushObject(validator));
-    }
-    return _results;
+
+
   },
 
   validate: (function(value) {
@@ -39,7 +60,7 @@ ET.Validator = Ember.Object.extend({
     rules = this.get('rules');
     errorMessages = [];
     if (this.get('required')) {
-      requiredRule = ET.validatorRegistry.required;
+      requiredRule = ET.validatorRegistry.byKey('required');
       if (!requiredRule.isValid(value)) {
         errorMessages.pushObject(requiredRule.message);
       }
@@ -48,7 +69,7 @@ ET.Validator = Ember.Object.extend({
       for (_i = 0, _len = rules.length; _i < _len; _i++) {
         rule = rules[_i];
         if (!rule.isValid(value)) {
-          errorMessages.pushObject(rule.message);
+          errorMessages.pushObject(typeof rule.message == 'function' ? rule.message() : rule.message);
         }
       }
     }

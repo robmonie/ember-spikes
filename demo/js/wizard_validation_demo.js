@@ -14,7 +14,8 @@ DETAILS_TEMPLATE = '\
 <legend>Personal Details</legend>\
 {{view ET.TextField label="Name" required="true" valueBinding="content.name"}}\
 {{view ET.TextField label="Email" required="true" valueBinding="content.email" validators="email"}}\
-{{view ET.TextField label="Phone" required="true" valueBinding="content.phone"}}\
+{{view ET.TextField label="Phone" required="true" valueBinding="content.phone" validators="minLength(8)"}}\
+{{view ET.TextField label="Age" required="true" valueBinding="content.age" validators="numberRange(1..100)"}}\
 </fieldset>\
 '
 
@@ -23,7 +24,7 @@ ADDRESS_TEMPLATE = '\
 <legend>Address</legend>\
 {{view ET.TextField label="Street Address" required="true" valueBinding="content.streetAddress"}}\
 {{view ET.TextField label="City/Suburb" required="true" valueBinding="content.suburb"}}\
-{{view ET.TextField label="Postcode" required="true" valueBinding="content.postcode"}}\
+{{view ET.TextField label="Postcode" required="true" valueBinding="content.postcode" validators="maxLength(4)"}}\
 {{view ET.TextField label="State" required="true" valueBinding="content.state"}}\
 {{view ET.TextField label="Country" required="true" valueBinding="content.country"}}\
 </fieldset>\
