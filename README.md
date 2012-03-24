@@ -6,7 +6,9 @@ Contains a very alpha and incomplete validation framework and form wizard view w
 TBC
 
 ##Demos
-A basic demo can be found in the demo folder. This shows a basic three page form with validation.
+A basic demo can be found in the demo folder. This shows a three page form with validation.
+
+To run locally, clone the repository locally and build the project following the steps in 'How to build' below. The demo requires a local `dist\ember-tools.js` in order to run. Once things stabilise a bit more this step will no longer be required.
 
 ##How to build
 
