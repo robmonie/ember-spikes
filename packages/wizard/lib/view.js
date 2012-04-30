@@ -39,7 +39,7 @@ ET.WizardView = Ember.View.extend({
         return this.get('childViews').forEach(__bind(function(view, index) {
           if ((index + 1) === pageNumber) {
             view.set('isVisible', true);
-            return this.setPath('parentView.isCurrentPageValid', view.getPath('validationGroup.isValid'));
+            return this.setPath('parentView.isCurrentPageValid', view.get('isValid'));
           } else {
             return view.set('isVisible', false);
           }

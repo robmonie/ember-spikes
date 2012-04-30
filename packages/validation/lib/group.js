@@ -1,4 +1,6 @@
-ET.ValidationGroup = Ember.Object.extend({
+ET.ValidationGroup = Ember.Mixin.create({
+
+  isValidationGroup: true,
 
   init: function() {
     this._super();

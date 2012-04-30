@@ -28,6 +28,8 @@ The kicker gem aids development by detecting changes to ember-tools framework fi
 
 ##To Do
 
+* Externalise validation messages
+* Replace ValdationGroup with a mixin that achieves the same end
 * More validators
 * Support for more field types
 * Required field indicators

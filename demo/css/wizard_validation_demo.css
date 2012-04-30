@@ -5,10 +5,16 @@
 
 .nav-bottom-view table {
     width: 100%;
-
-
 }
 
 .text-right {
   text-align: right;
+}
+
+.wizard-view .form-actions {
+  padding-left: 18px;
+}
+
+input, textarea, select, .uneditable-input {
+  height: auto;
 }

@@ -16,6 +16,7 @@ DETAILS_TEMPLATE = '\
 {{view ET.TextField label="Email" required="true" valueBinding="content.email" validators="email"}}\
 {{view ET.TextField label="Phone" required="true" valueBinding="content.phone" validators="minLength(8) maxLength(12)"}}\
 {{view ET.TextField label="Age" required="true" valueBinding="content.age" validators="numberRange(1..100)"}}\
+{{view GenderSelect}}\
 </fieldset>\
 '
 
@@ -38,7 +39,16 @@ Demo.contactController = Ember.Object.create({
 
 Demo.PersonalDetailsView = ET.WizardPageView.extend({
   contentBinding: 'Demo.contactController',
-  template: Ember.Handlebars.compile(DETAILS_TEMPLATE)
+  template: Ember.Handlebars.compile(DETAILS_TEMPLATE),
+  GenderSelect: ET.SelectField.extend({
+    label: "Gender",
+    content: ['Male', 'Female'],
+    selectionBinding: 'content.gender',
+    optionLabelPath:  'content',
+    optionValuePath:  'content',
+    prompt: "Select Gender",
+    required: true
+  })
 });
 
 Demo.AddressView = ET.WizardPageView.extend({

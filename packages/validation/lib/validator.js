@@ -1,13 +1,13 @@
 ET.Validator = Ember.Object.extend({
   host: null,
   init: function() {
-    var host, key, rules, validationGroup, validator, validators, nearestWithValidationGroup, validatorOptions, _i, _len, _results;
+    var host, key, rules, validationGroup, validator, validators, validatorOptions, _i, _len, _results;
     this._super();
     host = this.get('host');
-    nearestWithValidationGroup = host.nearestWithProperty('validationGroup');
+    validationGroup = host.nearestWithProperty("isValidationGroup"); //nearestInstanceOf doesn't seemt to work with mixin ?
 
-    if (nearestWithValidationGroup) {
-      validationGroup = nearestWithValidationGroup.get('validationGroup');
+    if (validationGroup) {
+      // validationGroup = nearestWithValidationGroup.get('validationGroup');
       this.set('validationGroup', validationGroup);
       validationGroup.notifyValidity(this, false);
     }

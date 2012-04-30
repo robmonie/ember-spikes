@@ -4,7 +4,7 @@ ET.SelectField = ET.ValidatableField.extend({
   fieldViewClass: Ember.Select.extend({
 
     contentBinding: 'parentView.content',
-    selectionBinding: 'parentView.selection',
+    // selectionBinding: 'parentView.selection',
     optionLabelPathBinding: Ember.Binding.oneWay('parentView.optionLabelPath'),
     optionValuePathBinding: Ember.Binding.oneWay('parentView.optionValuePath'),
     promptBinding: Ember.Binding.oneWay('parentView.prompt'),
@@ -22,3 +22,4 @@ ET.SelectField = ET.ValidatableField.extend({
     }
   })
 });
+
