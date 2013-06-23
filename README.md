@@ -1,4 +1,3 @@
-# Ember Tools
 
 A few reusable ember.js components which at this stage comprises of a very alpha and incomplete validation framework and form wizard view with validation integration using the twitter bootstrap css and html format for layout.
 
